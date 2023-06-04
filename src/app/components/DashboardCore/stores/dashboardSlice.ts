@@ -1,12 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-import {
-  addWidgetReducer,
-  removeAllWidgetsReducer,
-  removeWidgetReducer,
-  restoreAllWidgetsReducer,
-} from './dashboardCoreReducer';
-import { DASHBOARD_STATE } from './dataType.constant';
-import { WidgetCoreModel } from './widgetCoreModel';
+import {createSlice} from '@reduxjs/toolkit';
+import {addWidgetReducer, removeAllWidgetsReducer, removeWidgetReducer, restoreAllWidgetsReducer,} from './dashboardCoreReducer';
+import {WidgetCoreModel} from './widgetCoreModel';
 
 export interface DashboardState {
   widgetModels: WidgetCoreModel[];
@@ -17,7 +11,7 @@ const initialState: DashboardState = {
 };
 
 export const dashboardSlice = createSlice({
-  name: DASHBOARD_STATE,
+  name: 'dashboard',
   initialState,
   reducers: {
     addWidget: addWidgetReducer,
@@ -27,9 +21,9 @@ export const dashboardSlice = createSlice({
   },
 });
 
-export const selectDashboard = (state: any) => state.dashboardCore.value;
+export const selectDashboard = (state: any) => state.dashboard;
 
-export const { addWidget, removeWidget, restoreAllWidgets, removeAllWidgets } =
+export const {addWidget, removeWidget, restoreAllWidgets, removeAllWidgets} =
   dashboardSlice.actions;
 
 export const dashboardReducer = dashboardSlice.reducer;

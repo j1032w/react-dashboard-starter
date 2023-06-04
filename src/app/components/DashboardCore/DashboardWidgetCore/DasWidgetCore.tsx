@@ -1,4 +1,6 @@
+import {useDispatch} from 'react-redux';
 import {FlexColumnWrapper} from '../../../pages/HomePage/components/styled/FlexColumnWrapper';
+import {removeWidget} from '../stores/dashboardSlice';
 import {WidgetCoreModel} from '../stores/widgetCoreModel';
 import {DasWidgetCoreToolbar} from './DasWidgetCoreToolbar';
 
@@ -7,9 +9,10 @@ import {DasWidgetCoreToolbar} from './DasWidgetCoreToolbar';
 
 export const DasWidgetCore = ({widgetData}) => {
   const {FrontComponent, BackComponent} = widgetData;
+  const dispatch = useDispatch();
 
   const close = (widgetData:WidgetCoreModel) => {
-    console.log('close');
+    dispatch(removeWidget(widgetData));
   }
 
   return (

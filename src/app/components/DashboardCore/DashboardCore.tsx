@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 
 
 export function DashboardCore({widgetsData = [], onLayoutChange}: {
-  widgetsData?: WidgetCoreModel[],
+  widgetsData?: any[],
   onLayoutChange?: (layouts) => void
 }) {
 

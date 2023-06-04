@@ -26,7 +26,7 @@ export const removeWidgetReducer = (
 
 export const restoreAllWidgetsReducer = (state: DashboardState, action) => {
   return {
-    widgetModels: action.payload.widgetModels,
+    widgetModels: [...action.payload.widgetModels],
   };
 };
 

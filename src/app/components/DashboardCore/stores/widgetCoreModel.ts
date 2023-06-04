@@ -1,5 +1,3 @@
-import {ComponentType} from 'react';
-
 export interface WidgetCoreModel {
   i: string;
   x: number;
@@ -8,6 +6,6 @@ export interface WidgetCoreModel {
   h: number;
   name: string;
   isShownFront: boolean;
-  FrontComponent?: ComponentType<any>;
-  BackComponent?: ComponentType<any>;
+  frontComponentName: string;
+  backComponentName: string;
 }
