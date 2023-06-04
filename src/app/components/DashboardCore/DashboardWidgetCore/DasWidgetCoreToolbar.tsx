@@ -1,3 +1,4 @@
+import {CgEditFlipH} from 'react-icons/cg';
 import {GrFormClose} from 'react-icons/gr';
 import styled from 'styled-components/macro';
 import {ToolbarButton, ToolbarRight} from '../../../pages/HomePage/components/styled/ToolbarRight';
@@ -15,13 +16,17 @@ const Wrapper = styled.div`
   }
 `;
 
-export const DasWidgetCoreToolbar = ({close, name}) => {
+export const DasWidgetCoreToolbar = ({close, flip, name}) => {
 
 
   return (
     <Wrapper>
       <div className='widget-header'> {name}</div>
       <ToolbarRight>
+        <ToolbarButton>
+          <CgEditFlipH onClick={flip}></CgEditFlipH>
+        </ToolbarButton>
+
         <ToolbarButton>
           <GrFormClose onClick={close}></GrFormClose>
         </ToolbarButton>

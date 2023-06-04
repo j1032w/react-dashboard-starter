@@ -2,6 +2,12 @@ import {PayloadAction} from '@reduxjs/toolkit';
 import {DashboardState} from './dashboardSlice';
 import {WidgetCoreModel} from './widgetCoreModel';
 
+// Redux Toolkit's createReducer API uses Immer internally automatically.
+// In turn, createSlice uses createReducer inside, so it's also safe to "mutate" state there as well:
+// https://redux-toolkit.js.org/usage/immer-reducers#redux-toolkit-and-immer
+
+
+
 
 
 export const addWidgetReducer = (
@@ -11,6 +17,16 @@ export const addWidgetReducer = (
   return {
     widgetModels: [...state.widgetModels, action.payload],
   };
+};
+
+
+export const updateWidgetReducer = (
+  state: DashboardState,
+  action: PayloadAction<WidgetCoreModel>,
+) => {
+  const widget = state.widgetModels.find(w => w.i === action.payload.i);
+
+  Object.assign(widget, action.payload);
 };
 
 export const removeWidgetReducer = (
@@ -25,9 +41,7 @@ export const removeWidgetReducer = (
 };
 
 export const restoreAllWidgetsReducer = (state: DashboardState, action) => {
-  return {
-    widgetModels: [...action.payload.widgetModels],
-  };
+  return {widgetModels: [...action.payload.widgetModels]};
 };
 
 export const removeAllWidgetsReducer = (state: DashboardState) => {

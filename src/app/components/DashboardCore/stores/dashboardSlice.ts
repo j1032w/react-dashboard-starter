@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {addWidgetReducer, removeAllWidgetsReducer, removeWidgetReducer, restoreAllWidgetsReducer,} from './dashboardCoreReducer';
+import {addWidgetReducer, removeAllWidgetsReducer, removeWidgetReducer, restoreAllWidgetsReducer, updateWidgetReducer,} from './dashboardCoreReducer';
 import {WidgetCoreModel} from './widgetCoreModel';
 
 export interface DashboardState {
@@ -18,12 +18,13 @@ export const dashboardSlice = createSlice({
     removeWidget: removeWidgetReducer,
     restoreAllWidgets: restoreAllWidgetsReducer,
     removeAllWidgets: removeAllWidgetsReducer,
+    updateWidget: updateWidgetReducer,
   },
 });
 
 export const selectDashboard = (state: any) => state.dashboard;
 
-export const {addWidget, removeWidget, restoreAllWidgets, removeAllWidgets} =
+export const {addWidget, removeWidget, restoreAllWidgets, removeAllWidgets, updateWidget} =
   dashboardSlice.actions;
 
 export const dashboardReducer = dashboardSlice.reducer;

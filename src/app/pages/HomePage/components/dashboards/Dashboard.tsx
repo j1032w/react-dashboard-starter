@@ -34,7 +34,7 @@ const initialState = {
       i: '2',
       x: 3, y: 0, w: 4, h: 8,
       name: 'Widget B',
-      isShownFront: false,
+      isShownFront: true,
       frontComponentName: 'DasDemoWidgetFront',
       backComponentName: 'DasDemoWidgetBack',
     },
@@ -42,7 +42,7 @@ const initialState = {
       i: '3',
       x: 7, y: 0, w: 4, h: 8,
       name: 'Widget C',
-      isShownFront: false,
+      isShownFront: true,
       frontComponentName: 'DasDemoWidgetFront',
       backComponentName: 'DasDemoWidgetBack',
     },
@@ -61,7 +61,7 @@ const initialState = {
 const buildDashboardData = (dashboardState) => {
   const widgetsData: any[] = [];
   const widgetModels = dashboardState?.dashboard?.widgetModels;
-  if(!widgetModels){
+  if (!widgetModels) {
     return {widgetModels: []};
   }
 
@@ -78,18 +78,12 @@ const buildDashboardData = (dashboardState) => {
 
     switch (widgetModel.backComponentName) {
       case 'DasDemoWidgetBack':
-        BackComponent = ({name}) => <DasDemoWidgetFront name={name}/>;
+        BackComponent = ({name}) => <DasDemoWidgetBack name={name}/>;
         break
     }
 
     widgetsData.push({
-      i: widgetModel.i,
-      x: widgetModel.x,
-      y: widgetModel.y,
-      w: widgetModel.w,
-      h: widgetModel.h,
-      name: widgetModel.name,
-      isShownFront: widgetModel.isShownFront,
+      ...widgetModel,
       FrontComponent,
       BackComponent,
     });
@@ -100,7 +94,7 @@ const buildDashboardData = (dashboardState) => {
 
 export function Dashboard() {
   const dispatch = useDispatch();
-  const dashboardState = useSelector(state=>buildDashboardData(state));
+  const dashboardState = useSelector(state => buildDashboardData(state));
 
 
   const reset = () => {
@@ -114,13 +108,15 @@ export function Dashboard() {
   }, [dispatch]);
 
 
-
-
   let layouts = [];
 
   const onLayoutChange = (newLayouts) => {
     layouts = newLayouts;
   };
+
+  const removeAll = () => {
+    console.log(dashboardState);
+  }
 
   return (
     <FlexColumnWrapper>
@@ -128,6 +124,11 @@ export function Dashboard() {
         <Fab variant="extended" onClick={reset}>
           <DonutLarge/>
           Reset
+        </Fab>
+
+        <Fab variant="extended" onClick={removeAll}>
+          <DonutLarge/>
+          Remove All
         </Fab>
       </Toolbar>
 
