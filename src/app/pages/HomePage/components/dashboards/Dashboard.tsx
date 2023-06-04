@@ -120,13 +120,13 @@ export function Dashboard() {
 
   return (
     <FlexColumnWrapper>
-      <Toolbar>
-        <Fab variant="extended" onClick={reset}>
+      <Toolbar id='dashboardToolbar'>
+        <Fab variant="extended" onClick={reset} id='resetBtn'>
           <DonutLarge/>
           Reset
         </Fab>
 
-        <Fab variant="extended" onClick={removeAll}>
+        <Fab variant="extended" onClick={removeAll} id='removeAllBtn'>
           <DonutLarge/>
           Remove All
         </Fab>

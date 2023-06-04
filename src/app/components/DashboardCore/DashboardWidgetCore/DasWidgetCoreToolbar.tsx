@@ -23,12 +23,12 @@ export const DasWidgetCoreToolbar = ({close, flip, name}) => {
     <Wrapper>
       <div className='widget-header'> {name}</div>
       <ToolbarRight>
-        <ToolbarButton>
-          <CgEditFlipH onClick={flip}></CgEditFlipH>
+        <ToolbarButton onClick={flip} id='flipBtn'>
+          <CgEditFlipH ></CgEditFlipH>
         </ToolbarButton>
 
-        <ToolbarButton>
-          <GrFormClose onClick={close}></GrFormClose>
+        <ToolbarButton onClick={close} id='closeBtn'>
+          <GrFormClose ></GrFormClose>
         </ToolbarButton>
       </ToolbarRight>
     </Wrapper>
