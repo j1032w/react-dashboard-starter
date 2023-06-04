@@ -1,6 +1,8 @@
-import { PayloadAction } from '@reduxjs/toolkit';
-import { DashboardState } from './dashboardSlice';
-import { WidgetCoreModel } from './widgetCoreModel';
+import {PayloadAction} from '@reduxjs/toolkit';
+import {DashboardState} from './dashboardSlice';
+import {WidgetCoreModel} from './widgetCoreModel';
+
+
 
 export const addWidgetReducer = (
   state: DashboardState,
@@ -17,7 +19,7 @@ export const removeWidgetReducer = (
 ) => {
   return {
     widgetModels: state.widgetModels.filter(
-      widget => widget.id !== action.payload.id,
+      widget => widget.i !== action.payload.i,
     ),
   };
 };

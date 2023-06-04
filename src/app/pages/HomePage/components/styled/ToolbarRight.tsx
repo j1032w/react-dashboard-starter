@@ -3,8 +3,9 @@ import styled from 'styled-components/macro';
 export const ToolbarRight=styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end; 
-  flex: 1;
+  justify-content: flex-end;
+  flex:0;
+  
 `;
 
 

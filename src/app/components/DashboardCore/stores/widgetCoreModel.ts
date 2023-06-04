@@ -1,7 +1,11 @@
-import { ComponentType } from 'react';
+import {ComponentType} from 'react';
 
 export interface WidgetCoreModel {
-  id: number;
+  i: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
   name: string;
   isShownFront: boolean;
   FrontComponent?: ComponentType<any>;

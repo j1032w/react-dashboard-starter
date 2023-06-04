@@ -7,53 +7,49 @@ import {FlexColumnWrapper} from '../../pages/HomePage/components/styled/FlexColu
 import {DasWidgetCore} from './DashboardWidgetCore/DasWidgetCore';
 import {WidgetCoreModel} from './stores/widgetCoreModel';
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 8px;
 
-  .toolbar {
-    display: flex;
-    flex: 1;
-  }
-`;
 
-export function DashboardCore({widgetsData = [],}: {
-  widgetsData?: WidgetCoreModel[];
-}) {
-  const layout = [
-    {i: '1', x: 0, y: 0, w: 3, h: 10},
-    {i: '2', x: 1, y: 0, w: 4, h: 8},
-  ];
-
-  const GridItemWrapper = styled(FlexColumnWrapper)`
+const GridItemWrapper = styled(FlexColumnWrapper)`
     background: #f5f5f5;
     border: 1px solid #ccc;
   `;
 
-  const GridItemContent = styled(FlexColumnWrapper)`
+const GridItemContent = styled(FlexColumnWrapper)`
 
   `;
 
-  const Wrapper = styled.div`
-    padding: 0.2rem;
-  `;
+const Wrapper = styled.div`
+  padding: 0.2rem;
+`;
+
+
+
+
+export function DashboardCore({widgetsData = [], onLayoutChange}: {
+  widgetsData?: WidgetCoreModel[],
+  onLayoutChange?: (layouts) => void
+}) {
 
   const ResponsiveGridLayout = WidthProvider(Responsive);
+
+
+
 
   return (
     <Wrapper>
       <ResponsiveGridLayout
-        layouts={{lg: layout}}
+        layouts={{lg: widgetsData}}
         breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
         cols={{lg: 12, md: 6, sm: 3, xs: 2, xxs: 1}}
         rowHeight={30}
         width={1200}
         className="layout"
+        draggableHandle=".widget-header"
+        onLayoutChange={onLayoutChange}
       >
         {widgetsData.map(widgetModel => {
           return (
-            <GridItemWrapper key={widgetModel.id}>
+            <GridItemWrapper key={widgetModel.i}>
               <GridItemContent>
                 <DasWidgetCore widgetData={widgetModel}></DasWidgetCore>
               </GridItemContent>

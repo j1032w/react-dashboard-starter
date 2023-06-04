@@ -7,7 +7,12 @@ const Wrapper = styled.div`
   padding: 0.1rem 0.2rem 0.1rem 0.2rem;
   display: flex;
   flex-direction: row;
-  background-color: #eee;
+  background-color: #eee;  
+  
+  .widget-header {
+    flex:1;
+    cursor: move; 
+  }
 `;
 
 export const DasWidgetCoreToolbar = ({close, name}) => {
@@ -15,7 +20,7 @@ export const DasWidgetCoreToolbar = ({close, name}) => {
 
   return (
     <Wrapper>
-      <div> {name}</div>
+      <div className='widget-header'> {name}</div>
       <ToolbarRight>
         <ToolbarButton>
           <GrFormClose onClick={close}></GrFormClose>
