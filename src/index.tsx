@@ -5,26 +5,27 @@
  * code.
  */
 
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
+import { CssBaseline } from '@mui/material';
+
+import { App } from 'app';
+import FontFaceObserver from 'fontfaceobserver';
 
 import * as React from 'react';
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 import ReactDOM from 'react-dom/client';
+
+import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
-import FontFaceObserver from 'fontfaceobserver';
+
+import reportWebVitals from 'reportWebVitals';
 
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
 
-import { App } from 'app';
-
-import { HelmetProvider } from 'react-helmet-async';
-
 import { configureAppStore } from 'store/configureStore';
 
 import { ThemeProvider } from 'styles/theme/ThemeProvider';
-
-import reportWebVitals from 'reportWebVitals';
 
 // Initialize languages
 import './locales/i18n';
@@ -43,12 +44,16 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+
 root.render(
   <Provider store={store}>
+    <CssBaseline />
     <ThemeProvider>
       <HelmetProvider>
-        <React.StrictMode>
-          <App />
+        <React.StrictMode><App />
         </React.StrictMode>
       </HelmetProvider>
     </ThemeProvider>

@@ -19,7 +19,7 @@ export function configureAppStore() {
     }),
   ] as StoreEnhancer[];
 
-  const store = configureStore({
+  return configureStore({
     reducer: createReducer(),
     middleware: defaultMiddleware => [...defaultMiddleware(), ...middlewares],
     devTools:
@@ -28,6 +28,4 @@ export function configureAppStore() {
       process.env.PUBLIC_URL.length > 0,
     enhancers,
   });
-
-  return store;
 }

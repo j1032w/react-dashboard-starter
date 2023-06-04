@@ -1,23 +1,41 @@
+import { Badge, Typography } from '@mui/material';
 import * as React from 'react';
+import { BsGithub } from 'react-icons/bs';
 import styled from 'styled-components/macro';
-import { Logo } from './Logo';
 import { StyleConstants } from 'styles/StyleConstants';
-import { Nav } from './Nav';
+import { Link } from '../Link';
 import { PageWrapper } from '../PageWrapper';
+import { Logo } from './Logo';
 
 export function NavBar() {
   return (
     <Wrapper>
       <PageWrapper>
         <Logo />
-        <Nav />
       </PageWrapper>
+      <ToolBar>
+        <Badge badgeContent={4}>
+          <Typography >🛍</Typography>
+        </Badge>
+        <Badge badgeContent="❕">
+          <Typography >🔔</Typography>
+        </Badge>
+        <a href="https://github.com/j1032w/react-dashboard-starter">
+          <BsGithub></BsGithub>
+        </a>
+      </ToolBar>
     </Wrapper>
   );
 }
 
+const ToolBar = styled.div`
+  justify-content: flex-end;
+  margin: 1rem;
+  font-size: 1.5rem;
+`;
+
 const Wrapper = styled.header`
-  box-shadow: 0 1px 0 0 ${p => p.theme.borderLight};
+  box-shadow: 0 1px 0 0 ${p => p.theme.border};
   height: ${StyleConstants.NAV_BAR_HEIGHT};
   display: flex;
   position: fixed;
