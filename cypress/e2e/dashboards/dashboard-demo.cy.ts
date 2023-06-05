@@ -19,22 +19,24 @@ describe('Dashboard demo', () => {
       //
       //
       //close widget
-      cy.get('.react-grid-item').eq(0).get('#closeBtn').click();
+      const secondWidget = cy.get('.react-grid-item').eq(1).find('#closeBtn').click();
       cy.wait(shortWaitingTime);
-      cy.get('.react-grid-item').eq(0).get('#closeBtn').click();
+      const secondWidget = cy.get('.react-grid-item').eq(1).find('#closeBtn').click();
       cy.wait(shortWaitingTime);
-      cy.get('.react-grid-item').eq(0).get('#closeBtn').click();
+      const secondWidget = cy.get('.react-grid-item').eq(1).find('#closeBtn').click();
       cy.get('.react-grid-item').should('have.length', 1)
+
+
+
+      // resize
+      cy.get('.react-grid-item').resize(200, 200);
       cy.wait(shortWaitingTime);
-
-
 
       // flip
       cy.get('.react-grid-item').eq(0).get('#flipBtn').click();
       cy.wait(shortWaitingTime);
 
-      cy.get('.react-grid-item').resize(200, 200);
-      cy.wait(shortWaitingTime);
+
 
 
 

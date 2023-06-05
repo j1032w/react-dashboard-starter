@@ -34,3 +34,5 @@ export const DasWidgetCoreToolbar = ({close, flip, name}) => {
     </Wrapper>
   )
 }
+
+

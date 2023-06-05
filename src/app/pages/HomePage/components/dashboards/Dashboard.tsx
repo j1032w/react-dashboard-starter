@@ -11,6 +11,7 @@ import {FlexColumnWrapper} from '../styled/FlexColumnWrapper';
 import {ToolbarRight} from '../styled/ToolbarRight';
 import {DasDemoWidgetBack} from './DasDemoWidgetBack';
 import {DasDemoWidgetFront} from './DasDemoWidgetFront';
+import {DasHousingWidgetPie} from './houseMarketings/DasHousingWidgetPie';
 
 
 const Toolbar = styled(ToolbarRight)`
@@ -25,9 +26,9 @@ const initialState = {
     {
       i: '1',
       x: 0, y: 0, w: 3, h: 10,
-      name: 'Widget A',
+      name: 'Housing Market',
       isShownFront: true,
-      frontComponentName: 'DasDemoWidgetFront',
+      frontComponentName: 'DasHousingWidgetPie',
       backComponentName: 'DasDemoWidgetBack',
     },
     {
@@ -71,15 +72,18 @@ const buildDashboardData = (dashboardState) => {
     let BackComponent;
 
     switch (widgetModel.frontComponentName) {
-      case 'DasDemoWidgetFront':
+      case 'DasHousingWidgetPie':
+        FrontComponent = () => <DasHousingWidgetPie />;
+        break;
+
+      default:
         FrontComponent = ({name}) => <DasDemoWidgetFront name={name}/>;
-        break
     }
 
     switch (widgetModel.backComponentName) {
       case 'DasDemoWidgetBack':
         BackComponent = ({name}) => <DasDemoWidgetBack name={name}/>;
-        break
+        break;
     }
 
     widgetsData.push({
@@ -120,13 +124,13 @@ export function Dashboard() {
 
   return (
     <FlexColumnWrapper>
-      <Toolbar id='dashboardToolbar'>
-        <Fab variant="extended" onClick={reset} id='resetBtn'>
+      <Toolbar id="dashboardToolbar">
+        <Fab variant="extended" onClick={reset} id="resetBtn">
           <DonutLarge/>
           Reset
         </Fab>
 
-        <Fab variant="extended" onClick={removeAll} id='removeAllBtn'>
+        <Fab variant="extended" onClick={removeAll} id="removeAllBtn">
           <DonutLarge/>
           Remove All
         </Fab>

@@ -1,6 +1,8 @@
 import { configureStore, StoreEnhancer } from '@reduxjs/toolkit';
 import { createInjectorsEnhancer } from 'redux-injectors';
+import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import createSagaMiddleware from 'redux-saga';
+import {fetchDasHousingDataEpic} from '../app/pages/HomePage/components/dashboards/houseMarketings/stores/dasHousingEpic';
 
 import { createReducer } from './reducers';
 
@@ -9,8 +11,15 @@ export function configureAppStore() {
   const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions);
   const { run: runSaga } = sagaMiddleware;
 
+  const epicMiddleware = createEpicMiddleware();
+  const rootEpic = combineEpics(
+    fetchDasHousingDataEpic
+  );
+
+  epicMiddleware.run(rootEpic);
+
   // Create the store with saga middleware
-  const middlewares = [sagaMiddleware];
+  const middlewares = [sagaMiddleware, epicMiddleware];
 
   const enhancers = [
     createInjectorsEnhancer({
