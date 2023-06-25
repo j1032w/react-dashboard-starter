@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { WidgetCoreLayout } from '../widget-core/models/widget-core-layout';
+import { WidgetCoreOption } from '../widget-core/models/widget-core-option';
 
 import { DashboardCoreState } from './dashboard-core-state';
 
@@ -9,16 +9,16 @@ import { DashboardCoreState } from './dashboard-core-state';
 
 export const addWidgetReducer = (
   state: DashboardCoreState,
-  payLoadAction: PayloadAction<WidgetCoreLayout> // {payload}: {payload: WidgetCoreLayout}
+  payLoadAction: PayloadAction<WidgetCoreOption> // {payload}: {payload: WidgetCoreLayout}
 ) => {
-  state.widgetCoreLayouts.push(payLoadAction.payload);
+  state.widgetCoreOptions.push(payLoadAction.payload);
 };
 
 export const updateWidgetReducer = (
   state: DashboardCoreState,
-  payloadAction: PayloadAction<WidgetCoreLayout>
+  payloadAction: PayloadAction<WidgetCoreOption>
 ) => {
-  const widget = state.widgetCoreLayouts.find(
+  const widget = state.widgetCoreOptions.find(
     (item) => item.i === payloadAction.payload.i
   );
   if (widget) {
@@ -30,23 +30,23 @@ export const removeWidgetReducer = (
   state: DashboardCoreState,
   action: PayloadAction<string>
 ) => {
-  state.widgetCoreLayouts = state.widgetCoreLayouts.filter(
+  state.widgetCoreOptions = state.widgetCoreOptions.filter(
     (item) => item.i !== action.payload
   );
 };
 
-export const updateLayoutReducer = (
+export const updateAllWidgetsReducer = (
   state: DashboardCoreState,
-  action: PayloadAction<WidgetCoreLayout[]>
+  action: PayloadAction<WidgetCoreOption[]>
 ) => {
-  state.widgetCoreLayouts = action.payload;
+  state.widgetCoreOptions = action.payload;
 };
 
 export const flipWidgetReducer = (
   state: DashboardCoreState,
   action: PayloadAction<string>
 ) => {
-  const widget = state.widgetCoreLayouts.find(
+  const widget = state.widgetCoreOptions.find(
     (item) => item.i === action.payload
   );
   if (widget) {
@@ -55,5 +55,5 @@ export const flipWidgetReducer = (
 };
 
 export const removeAllWidgetsReducer = (state: DashboardCoreState) => {
-  state.widgetCoreLayouts = [];
+  state.widgetCoreOptions = [];
 };

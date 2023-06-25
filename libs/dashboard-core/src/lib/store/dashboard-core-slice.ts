@@ -4,14 +4,14 @@ import {
   flipWidgetReducer,
   removeAllWidgetsReducer,
   removeWidgetReducer,
-  updateLayoutReducer,
+  updateAllWidgetsReducer,
   updateWidgetReducer
 } from './dashboard-core-reducers';
 import {DashboardCoreState} from './dashboard-core-state';
 
 
 const initialState: DashboardCoreState = {
-  widgetCoreLayouts: []
+  widgetCoreOptions: []
 }
 
 export const dashboardCoreSlice = createSlice({
@@ -21,7 +21,7 @@ export const dashboardCoreSlice = createSlice({
     dashboardAddWidget: addWidgetReducer,
     dashboardRemoveWidget: removeWidgetReducer,
     dashboardUpdateWidget: updateWidgetReducer,
-    dashboardUpdateLayout: updateLayoutReducer,
+    dashboardUpdateAllWidgets: updateAllWidgetsReducer,
     dashboardRemoveAllWidgets: removeAllWidgetsReducer,
     dashboardFlipWidget:flipWidgetReducer
   },
@@ -29,7 +29,7 @@ export const dashboardCoreSlice = createSlice({
 });
 
 export const widgetLayoutsSelector = (state: { dashboard: DashboardCoreState }) => {
-  return state.dashboard.widgetCoreLayouts;
+  return state.dashboard.widgetCoreOptions;
 };
 
 
@@ -38,7 +38,7 @@ export const {
   dashboardRemoveWidget,
   dashboardUpdateWidget,
   dashboardRemoveAllWidgets,
-  dashboardUpdateLayout,
+  dashboardUpdateAllWidgets,
   dashboardFlipWidget
 } = dashboardCoreSlice.actions;
 

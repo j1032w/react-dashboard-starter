@@ -1,18 +1,18 @@
-import { WidgetCoreLayout, WidgetCoreModel } from "@das-ui/dashboard-core";
+import { WidgetCoreOption, WidgetCoreLayouts } from "@das-ui/dashboard-core";
 import { FC } from "react";
 import { DemoBackComponent } from "../widges/DemoBackComponent";
 import { DemoFrontComponent } from "../widges/DemoFrontComponent";
 import { DasHousingWidgetPie } from "../widges/houseMarketings/DasHousingWidgetPie";
 import { WidgetTypeEnum } from "../widges/widget-types";
 
-export const buildWidgetCoreModels = (widgetCoreLayouts: WidgetCoreLayout[]): WidgetCoreModel[] => {
-  const widgetCoreModels: WidgetCoreModel[] = [];
+export const createWidgetCoreModels = (widgetCoreStates: WidgetCoreOption[]): WidgetCoreLayouts[] => {
+  const widgetCoreModels: WidgetCoreLayouts[] = [];
 
-  for (const widgetCoreLayout of widgetCoreLayouts) {
+  for (const widgetCoreState of widgetCoreStates) {
     let FrontComponent: FC<any>;
     let BackComponent: FC<any>;
 
-    switch (widgetCoreLayout.frontComponentType) {
+    switch (widgetCoreState.frontComponentType) {
       case WidgetTypeEnum.HousingMarketFront:
         FrontComponent = DasHousingWidgetPie;
         break;
@@ -21,12 +21,12 @@ export const buildWidgetCoreModels = (widgetCoreLayouts: WidgetCoreLayout[]): Wi
         FrontComponent = DemoFrontComponent;
     }
 
-    switch (widgetCoreLayout.backComponentType) {
+    switch (widgetCoreState.backComponentType) {
       default:
         BackComponent = DemoBackComponent;
     }
 
-    widgetCoreModels.push({...widgetCoreLayout, FrontComponent, BackComponent});
+    widgetCoreModels.push({...widgetCoreState, FrontComponent, BackComponent});
   }
 
   return widgetCoreModels;

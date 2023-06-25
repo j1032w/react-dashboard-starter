@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import { WidgetCoreLayout } from './widget-core-layout';
+import { WidgetCoreOption } from './widget-core-option';
 
-export type WidgetCoreModel = WidgetCoreLayout & {
+export type WidgetCoreModel = WidgetCoreOption & {
   FrontComponent: FC<any>;
   BackComponent: FC<any>;
+  remove?: () => void;
+  flip?: () => void;
 };

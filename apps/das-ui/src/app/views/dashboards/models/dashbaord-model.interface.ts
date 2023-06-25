@@ -1,11 +1,11 @@
-import {WidgetCoreLayout} from '@das-ui/dashboard-core';
+import {WidgetCoreOption} from '@das-ui/dashboard-core';
 import React from 'react';
 
 export interface DashboardModelInterface {
   widgetModels: WidgetModelInterface[];
 }
 
-export interface WidgetModelInterface extends WidgetCoreLayout {
+export interface WidgetModelInterface extends WidgetCoreOption {
   FrontComponent?: React.ComponentState;
   BackComponent?: React.ComponentState;
 }

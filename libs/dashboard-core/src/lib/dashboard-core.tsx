@@ -1,27 +1,60 @@
-import { DashboardCoreState } from './store/dashboard-core-state';
+import * as _ from 'lodash';
 import { FC } from 'react';
 import { Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-resizable/css/styles.css';
 import './dashboard-core.scss';
-import { dashboardFlipWidget, dashboardRemoveWidget, dashboardUpdateLayout } from './store/dashboard-core-slice';
-
-
+import {
+  dashboardFlipWidget,
+  dashboardRemoveWidget,
+  dashboardUpdateAllWidgets,
+} from './store/dashboard-core-slice';
+import { DashboardCoreState } from './store/dashboard-core-state';
 import { WidgetCoreLayout } from './widget-core/models/widget-core-layout';
-import { WidgetCoreModel } from './widget-core/models/widget-core.model';
-import { WidgetCore } from "./widget-core/widget-core";
+
+import { WidgetCoreOption } from './widget-core/models/widget-core-option';
+import { WidgetCoreModel } from "./widget-core/models/widget-core.model";
+import { WidgetCore } from './widget-core/widget-core';
 import { WidgetCoreProvider } from './widget-core/widget-core-context';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 type DashboardCoreProps = {
-  buildWidgetCoreModels: (
-    widgetCoreLayouts: WidgetCoreLayout[]
+  createWidgetCoreModels: (
+    widgetCoreLayouts: WidgetCoreOption[]
   ) => WidgetCoreModel[];
 };
 
-export const DashboardCore: FC<DashboardCoreProps> = ({ buildWidgetCoreModels }) => {
+
+const createWidgetCoreOptions = (widgetCoreLayouts: WidgetCoreLayout[],
+                             widgetCoreModels: WidgetCoreModel[]): WidgetCoreOption[] => {
+  return  widgetCoreLayouts.map(
+    (item) => {
+      const widgetCoreModel = _.find(widgetCoreModels, { i: item.i });
+
+      return {
+        i: item.i,
+        x: item.x,
+        y: item.y,
+        w: item.w,
+        h: item.h,
+        name: widgetCoreModel?.name ?? '',
+        isFrontVisible: widgetCoreModel?.isFrontVisible ?? true,
+        frontComponentType: widgetCoreModel?.frontComponentType,
+        backComponentType: widgetCoreModel?.backComponentType,
+      };
+    }
+  );
+
+}
+
+
+
+
+export const DashboardCore: FC<DashboardCoreProps> = ({
+  createWidgetCoreModels,
+}) => {
   const dispatch = useDispatch();
 
   const removeWidget = (index: string) => {
@@ -32,44 +65,43 @@ export const DashboardCore: FC<DashboardCoreProps> = ({ buildWidgetCoreModels })
     dispatch(dashboardFlipWidget(index));
   };
 
-  const widgetCoreModels: WidgetCoreModel[] = useSelector(
-    (state: { dashboard: DashboardCoreState }) => {
-      const widgetCoreLayouts: WidgetCoreLayout[] =
-        state.dashboard.widgetCoreLayouts;
-      return buildWidgetCoreModels(widgetCoreLayouts);
-    }
-  );
+  const { widgetCoreLayouts, widgetCoreModels, widgetCoreOptions } =
+    useSelector((state: { dashboard: DashboardCoreState }) => {
+      const widgetCoreOptions: WidgetCoreOption[] =
+        state.dashboard.widgetCoreOptions;
 
-  const onLayoutChange = (widgetCoreModels: WidgetCoreModel[]) => {
-    const widgetCoreLayouts: WidgetCoreLayout[] = widgetCoreModels.map(
-      (item) => {
-        return {
-          i: item.i,
-          x: item.x,
-          y: item.y,
-          w: item.w,
-          h: item.h,
-          name: item.name,
-          isFrontVisible: item.isFrontVisible,
-          frontComponentType: item.frontComponentType,
-          backComponentType: item.backComponentType,
-        };
-      }
-    );
+      const widgetCoreLayouts: WidgetCoreLayout[] = widgetCoreOptions.map(
+        (item) => {
+          return {
+            i: item.i,
+            x: item.x,
+            y: item.y,
+            w: item.w,
+            h: item.h,
+          };
+        }
+      );
 
-    dispatch(dashboardUpdateLayout(widgetCoreLayouts));
+      const widgetCoreModels = createWidgetCoreModels(widgetCoreOptions);
+
+      return { widgetCoreLayouts, widgetCoreModels, widgetCoreOptions };
+    });
+
+  const onLayoutChange = (widgetCoreLayouts: WidgetCoreLayout[]) => {
+    const widgetCoreOptions = createWidgetCoreOptions(widgetCoreLayouts, widgetCoreModels);
+    dispatch(dashboardUpdateAllWidgets(widgetCoreOptions));
   };
 
   return (
     <div>
       <ResponsiveGridLayout
-        layouts={{ lg: widgetCoreModels }}
+        layouts={{ lg: widgetCoreLayouts }}
         breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
         cols={{ lg: 12, md: 6, sm: 3, xs: 2, xxs: 1 }}
         rowHeight={30}
         width={1200}
         className="layout"
-        draggableHandle=".widget-header"
+        draggableHandle=".toolbar__title"
         onLayoutChange={onLayoutChange}
       >
         {widgetCoreModels.map((widgetCoreModel) => {
@@ -91,4 +123,3 @@ export const DashboardCore: FC<DashboardCoreProps> = ({ buildWidgetCoreModels })
     </div>
   );
 };
-

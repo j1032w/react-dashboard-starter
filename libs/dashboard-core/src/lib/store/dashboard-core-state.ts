@@ -1,7 +1,7 @@
-import { WidgetCoreLayout } from "../widget-core/models/widget-core-layout";
+import { WidgetCoreOption } from "../widget-core/models/widget-core-option";
 
 
 export type DashboardCoreState = {
-  widgetCoreLayouts:  WidgetCoreLayout[];
+  widgetCoreOptions:  WidgetCoreOption[];
 }
 

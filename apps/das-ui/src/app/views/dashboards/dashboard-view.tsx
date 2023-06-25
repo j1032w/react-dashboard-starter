@@ -1,12 +1,16 @@
-import { DashboardCore, dashboardUpdateLayout, WidgetCoreLayout } from "@das-ui/dashboard-core";
-import { useEffect } from "react";
+import {
+  DashboardCore,
+  dashboardUpdateAllWidgets,
+  WidgetCoreOption,
+} from '@das-ui/dashboard-core';
+import { useEffect } from 'react';
 
 import { useAppDispatch } from '../../stores/hooks';
-import { buildWidgetCoreModels } from './services/dashbaord-model-builder';
+import { createWidgetCoreModels } from './services/create-widget-core-model';
 
 import { WidgetTypeEnum } from './widges/widget-types';
 
-const defaultLayouts: WidgetCoreLayout[] = [
+const defaultWidgetStates: WidgetCoreOption[] = [
   {
     i: '1',
     x: 0,
@@ -58,7 +62,7 @@ export const DashboardView = () => {
 
   //initialize the layout
   useEffect(() => {
-    dispatch(dashboardUpdateLayout(defaultLayouts));
+    dispatch(dashboardUpdateAllWidgets(defaultWidgetStates));
   }, [dispatch]);
 
   // const onLayoutChange = (newLayouts: WidgetCoreLayout[]) => {
@@ -67,7 +71,7 @@ export const DashboardView = () => {
 
   return (
     <DashboardCore
-      buildWidgetCoreModels={buildWidgetCoreModels}
+      createWidgetCoreModels={createWidgetCoreModels}
     ></DashboardCore>
   );
 };
