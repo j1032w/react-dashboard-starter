@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.base.json",
+
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "types": ["vite/client"]
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+
+  "paths": {
+    "@das-ui/common-component": ["libs/common-component/src/index.ts"]
+  }
+}

@@ -1,0 +1,12 @@
+.app-container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .view-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+}
