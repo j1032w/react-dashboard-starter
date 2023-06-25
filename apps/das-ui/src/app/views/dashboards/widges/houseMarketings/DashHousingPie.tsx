@@ -1,11 +1,12 @@
 import {PieChart} from 'devextreme-react';
 import {Series} from 'devextreme-react/chart';
+import { FC } from "react";
 import {data} from './stores/dasHousingMockData';
 
-export const DasHousingWidgetPie = () => {
+export const DashHousingPie: FC = () => {
 
   return (
-    <PieChart dataSource={data} palette="Bright" size={{height:300, width: 400}}>
+    <PieChart dataSource={data} palette="Bright" >
       <Series
         argumentField="buildingType"
         valueField="percentage"

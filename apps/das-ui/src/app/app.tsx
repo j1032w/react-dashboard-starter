@@ -1,12 +1,12 @@
-import './app.scss';
+import styles from './app.module.scss';
 import { AppHeader } from './layout/header/header';
 import { DashboardView } from './views';
 
 export function App() {
   return (
-    <div className="app-container">
+    <div className={styles.appContainer}>
       <AppHeader></AppHeader>
-      <div className="view-container">
+      <div className={styles.appContainer}>
         <DashboardView></DashboardView>
       </div>
     </div>

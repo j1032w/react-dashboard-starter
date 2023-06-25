@@ -1,21 +1,17 @@
-import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { AppBar, Badge, IconButton, Toolbar, Typography } from '@mui/material';
 import * as React from 'react';
 import { FC } from 'react';
-import './header.scss';
+import styles from './header.scss';
 
 export const AppHeader: FC = () => {
   return (
     <AppBar position="static" className="app-header">
-
-
       <Toolbar
         sx={{
           pr: '24px', // keep right padding when drawer closed
         }}
       >
-
         <Typography
           component="h1"
           variant="h6"

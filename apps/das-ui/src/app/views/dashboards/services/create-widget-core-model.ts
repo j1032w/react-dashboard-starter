@@ -1,12 +1,14 @@
-import { WidgetCoreOption, WidgetCoreLayouts } from "@das-ui/dashboard-core";
+import { WidgetCoreModel, WidgetCoreOption } from "@das-ui/dashboard-core";
 import { FC } from "react";
-import { DemoBackComponent } from "../widges/DemoBackComponent";
-import { DemoFrontComponent } from "../widges/DemoFrontComponent";
-import { DasHousingWidgetPie } from "../widges/houseMarketings/DasHousingWidgetPie";
+import { DemoBackComponent } from "../widges/demo-back-component";
+import { DemoFrontComponent } from "../widges/demo-front-component";
+
+import { DashHousingPie } from "../widges/houseMarketings/DashHousingPie";
+import { DashHousingTable } from "../widges/houseMarketings/DashHousingTable";
 import { WidgetTypeEnum } from "../widges/widget-types";
 
-export const createWidgetCoreModels = (widgetCoreStates: WidgetCoreOption[]): WidgetCoreLayouts[] => {
-  const widgetCoreModels: WidgetCoreLayouts[] = [];
+export const createWidgetCoreModels = (widgetCoreStates: WidgetCoreOption[]): WidgetCoreModel[] => {
+  const widgetCoreModels: WidgetCoreModel[] = [];
 
   for (const widgetCoreState of widgetCoreStates) {
     let FrontComponent: FC<any>;
@@ -14,7 +16,7 @@ export const createWidgetCoreModels = (widgetCoreStates: WidgetCoreOption[]): Wi
 
     switch (widgetCoreState.frontComponentType) {
       case WidgetTypeEnum.HousingMarketFront:
-        FrontComponent = DasHousingWidgetPie;
+        FrontComponent = DashHousingPie;
         break;
 
       default:
@@ -22,6 +24,10 @@ export const createWidgetCoreModels = (widgetCoreStates: WidgetCoreOption[]): Wi
     }
 
     switch (widgetCoreState.backComponentType) {
+      case WidgetTypeEnum.HousingMarketBack:
+        BackComponent = DashHousingTable;
+        break;
+
       default:
         BackComponent = DemoBackComponent;
     }
