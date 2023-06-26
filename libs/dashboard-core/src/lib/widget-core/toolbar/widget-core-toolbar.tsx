@@ -1,7 +1,8 @@
 import CloseIcon from '@mui/icons-material/Close';
 import FlipIcon from '@mui/icons-material/Flip';
-import { FC, useContext } from 'react';
-import { WidgetCoreContext } from '../widget-core-context';
+import {IconButton, Tooltip} from '@mui/material';
+import {FC, useContext} from 'react';
+import {WidgetCoreContext} from '../widget-core-context';
 
 import styles from './widget-core-toolbar.module.scss';
 
@@ -12,13 +13,19 @@ export const WidgetCoreToolbar: FC = () => {
     <div className={styles.toolbar}>
       <div className={styles['toolbar__title'] + ' draggable-handle'}> {widgetCoreModel.name}</div>
       <div className={styles['toolbar__buttons']}>
-        <span onClick={widgetCoreModel.flip} id="flipBtn">
-          <FlipIcon />
-        </span>
 
-        <span onClick={widgetCoreModel.remove} id="closeBtn">
-          <CloseIcon />
-        </span>
+        <Tooltip title="Flip">
+          <IconButton onClick={widgetCoreModel.flip} id="flipBtn">
+            <FlipIcon/>
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Remove">
+          <IconButton onClick={widgetCoreModel.remove} id="closeBtn">
+            <CloseIcon/>
+          </IconButton>
+        </Tooltip>
+
       </div>
     </div>
   );

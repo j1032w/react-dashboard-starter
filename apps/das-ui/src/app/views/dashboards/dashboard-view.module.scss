@@ -1,0 +1,10 @@
+.main-container{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__dashboard-core{
+    flex: 1;
+
+  }
+}

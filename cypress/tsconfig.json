@@ -1,7 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "isolatedModules": false,
-    "types": ["node", "jest", "cypress", "cypress-real-events"]
-  }
-}

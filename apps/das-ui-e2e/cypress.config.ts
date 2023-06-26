@@ -5,4 +5,9 @@ export default defineConfig({
   e2e: nxE2EPreset(__dirname, {
     bundler: 'vite',
   }),
+
+  viewportHeight: 1080,
+  viewportWidth: 1920,
+  videoCompression: false,
+
 });

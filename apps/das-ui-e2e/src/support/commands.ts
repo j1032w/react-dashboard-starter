@@ -8,13 +8,26 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+import 'cypress-real-events/support';
+import {dragTo, resize} from './drag-to-support';
+
+
 // eslint-disable-next-line @typescript-eslint/no-namespace
 declare namespace Cypress {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Chainable<Subject> {
     login(email: string, password: string): void;
+    dragTo(dropSelector: string): Chainable<JQuery<Element>>;
+    resize(x:number, y:number): Chainable<JQuery<Element>>;
   }
 }
+
+
+
+Cypress.Commands.add('dragTo', {prevSubject: 'element'}, dragTo);
+Cypress.Commands.add('resize', {prevSubject: 'element'}, resize);
+
+
 //
 // -- This is a parent command --
 Cypress.Commands.add('login', (email, password) => {

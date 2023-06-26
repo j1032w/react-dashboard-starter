@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run das-ui:serve"
+    "start": "nx run das-ui:serve",
+    "cy-dash-ui": "yarn nx e2e das-ui-e2e --configuration=production --watch",
+    "cy-dash-ui:watch": "yarn cy-dash-ui --watch"
   },
 
   "private": true,
@@ -63,6 +65,7 @@
     "autoprefixer": "^10.4.14",
     "babel-jest": "^29.4.1",
     "cypress": "^12.11.0",
+    "cypress-real-events": "^1.7.6",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-cypress": "^2.10.3",
