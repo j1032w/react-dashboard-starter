@@ -1,14 +1,24 @@
-.app-container{
+.app{
   display: flex;
   flex-direction: column;
   height: 100vh;
 
   background-color: #F5F5F5;
 
-  .view-container{
+
+  &__content{
     flex: 1;
     display: flex;
-    flex-direction: column;
-    overflow: auto;
+    flex-direction: row;
+
+    &__view-container{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
   }
+
+
+
+
 }

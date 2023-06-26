@@ -4,7 +4,7 @@ import { Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-resizable/css/styles.css';
-import './dashboard-core.scss';
+
 import {
   dashboardFlipWidget,
   dashboardRemoveWidget,
@@ -17,6 +17,8 @@ import { WidgetCoreOption } from './widget-core/models/widget-core-option';
 import { WidgetCoreModel } from "./widget-core/models/widget-core.model";
 import { WidgetCore } from './widget-core/widget-core';
 import { WidgetCoreProvider } from './widget-core/widget-core-context';
+
+import styles from './dashboard-core.module.scss';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -93,15 +95,14 @@ export const DashboardCore: FC<DashboardCoreProps> = ({
   };
 
   return (
-    <div>
-      <ResponsiveGridLayout
+    <div  className={styles['grid-layout']}>
+    <ResponsiveGridLayout
         layouts={{ lg: widgetCoreLayouts }}
         breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
         cols={{ lg: 12, md: 6, sm: 3, xs: 2, xxs: 1 }}
         rowHeight={30}
         width={1200}
-        className="layout"
-        draggableHandle=".toolbar__title"
+        draggableHandle=".draggable-handle"
         onLayoutChange={onLayoutChange}
       >
         {widgetCoreModels.map((widgetCoreModel) => {

@@ -10,7 +10,7 @@ export const WidgetCoreToolbar: FC = () => {
 
   return (
     <div className={styles.toolbar}>
-      <div className={styles['toolbar__title']}> {widgetCoreModel.name}</div>
+      <div className={styles['toolbar__title'] + ' draggable-handle'}> {widgetCoreModel.name}</div>
       <div className={styles['toolbar__buttons']}>
         <span onClick={widgetCoreModel.flip} id="flipBtn">
           <FlipIcon />
