@@ -13,6 +13,8 @@
 ![Demo](documentations/react-das-cypress.gif)
 
 
+![](documentations/redux-chrome.png)
+
 # Features
 
 - Built with [React 18](https://react.dev/), [Typescript 4](https://www.typescriptlang.org/), [react-redux 7](https://react-redux.js.org/), and [Material UI 5](https://mui.com/)
