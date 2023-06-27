@@ -45,3 +45,4 @@ yarn start
 ![Demo](documentations/design.png)
 
 
+<a title="web stats" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12895561/0/d6769449/1/" alt="web stats" referrerPolicy="no-referrer-when-downgrade"></a>
