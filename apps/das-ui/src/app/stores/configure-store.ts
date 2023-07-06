@@ -41,6 +41,4 @@ export function configureAppStore() {
   });
 }
 
-export type AppStore = ReturnType<typeof configureAppStore>;
-export type RootState = AppStore['getState'];
-export type AppDispatch = AppStore['dispatch'];
+

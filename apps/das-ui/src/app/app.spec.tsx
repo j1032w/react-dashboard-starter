@@ -1,3 +1,4 @@
+import 'jest-canvas-mock';
 import {screen} from '@testing-library/react';
 import App from './app';
 import {renderWithProviders} from './common/testing-utilities';
