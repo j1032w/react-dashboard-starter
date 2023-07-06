@@ -1,16 +1,16 @@
-import { WidgetCoreModel, WidgetCoreOption } from "@das-ui/dashboard-core";
-import { FC } from "react";
-import { DemoBackComponent } from "../widges/demo-back-component";
-import { DemoFrontComponent } from "../widges/demo-front-component";
+import {WidgetCoreModel, WidgetCoreOption} from '@das-ui/dashboard-core';
+import {FC} from 'react';
+import {DemoBackComponent} from '../widges/demo-back-component';
+import {DemoFrontComponent} from '../widges/demo-front-component';
 
-import { DashHousingPie } from "../widges/houseMarketings/DashHousingPie";
-import { DashHousingTable } from "../widges/houseMarketings/DashHousingTable";
-import { WidgetTypeEnum } from "../widges/widget-types";
+import {DashHousingPie} from '../widges/houseMarketings/DashHousingPie';
+import {DashHousingTable} from '../widges/houseMarketings/DashHousingTable';
+import {WidgetTypeEnum} from '../widges/widget-types';
 
-export const createWidgetCoreModels = (widgetCoreStates: WidgetCoreOption[]): WidgetCoreModel[] => {
+export const createWidgetCoreModels = (widgetCoreOptions: WidgetCoreOption[] = []): WidgetCoreModel[] => {
   const widgetCoreModels: WidgetCoreModel[] = [];
 
-  for (const widgetCoreState of widgetCoreStates) {
+  for (const widgetCoreState of widgetCoreOptions) {
     let FrontComponent: FC<any>;
     let BackComponent: FC<any>;
 

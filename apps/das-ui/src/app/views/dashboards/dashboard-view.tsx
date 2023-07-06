@@ -1,4 +1,4 @@
-import {DashboardCore, dashboardUpdateAllWidgets, WidgetCoreOption,} from '@das-ui/dashboard-core';
+import {DashboardCore, dashboardUpdateAllWidgets,} from '@das-ui/dashboard-core';
 import {useEffect} from 'react';
 
 import {useAppDispatch} from '../../stores/hooks';
@@ -7,9 +7,6 @@ import {defaultWidgetOptions} from './dashboard-view-mock-data';
 import styles from './dashboard-view.module.scss';
 import {createWidgetCoreModels} from './services/create-widget-core-model';
 import {DashViewToolbar} from './toolbar/dash-view-toolbar';
-
-import {WidgetTypeEnum} from './widges/widget-types';
-
 
 
 export const DashboardView = () => {

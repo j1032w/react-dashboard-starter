@@ -1,3 +1,4 @@
+import 'jest-canvas-mock';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { WidgetCoreOption } from '../widget-core/models/widget-core-option';
 

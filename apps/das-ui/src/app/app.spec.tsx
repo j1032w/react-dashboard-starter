@@ -1,15 +1,13 @@
-import { render } from '@testing-library/react';
-
+import {screen} from '@testing-library/react';
 import App from './app';
+import {renderWithProviders} from './common/testing-utilities';
 
 describe('App', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<App />);
-    expect(baseElement).toBeTruthy();
-  });
+
 
   it('should have a greeting as the title', () => {
-    const { getByText } = render(<App />);
-    expect(getByText(/Welcome das-ui/gi)).toBeTruthy();
+    renderWithProviders(<App/>);
+
+    expect(screen.getAllByTestId('das-dashboard-widget').length).toEqual(4);
   });
 });

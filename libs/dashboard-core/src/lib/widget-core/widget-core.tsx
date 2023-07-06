@@ -11,7 +11,7 @@ export const WidgetCore: React.FC = () => {
   const widgetCoreModel = useContext(WidgetCoreContext);
 
   return (
-    <Paper className='widget'>
+    <Paper className='widget' data-testid='das-dashboard-widget'>
       <WidgetCoreToolbar></WidgetCoreToolbar>
       <div className='widget__content'>
         {widgetCoreModel.isFrontVisible && widgetCoreModel.FrontComponent && (
