@@ -44,12 +44,22 @@ yarn start
 3. Navigate to [http://localhost:4200/](http://localhost:4200/)
 
 
-4. Running unit tests, build, and lint
+<br/>
+
+#### Running unit tests
 ```
-  yarn test
-  yarn lint
-  yarn build
+yarn test
 ```
+
+#### Running eslint
+```
+yarn lint
+```
+
+#### Running build
+``` 
+yarn build
+``` 
 
 # Design
 
