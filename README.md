@@ -15,6 +15,9 @@
 
 ![](documentations/redux-chrome.png)
 
+![](documentations/gitlab.png)
+
+
 # Features
 
 - Built with [React 18](https://react.dev/), [Typescript 4](https://www.typescriptlang.org/), [react-redux 7](https://react-redux.js.org/), and [Material UI 5](https://mui.com/)
@@ -23,6 +26,7 @@
 - Unit testing with [Jest](https://jestjs.io/) and [React Testing Library ](https://testing-library.com/docs/react-testing-library/intro/) 
 - E2E automation testing with [Cypress](https://www.cypress.io/)
 - [ESlint](https://eslint.org/) and [Prettier](https://prettier.io/)
+- [Gitlab](https://gitlab.com/j1032w/react-dashboard-starter/-/pipelines) CI/CD pipeline
 
 
 
@@ -39,6 +43,13 @@ yarn start
 ```
 3. Navigate to [http://localhost:4200/](http://localhost:4200/)
 
+
+4. Running unit tests, build, and lint
+```
+  yarn test
+  yarn lint
+  yarn build
+```
 
 # Design
 
