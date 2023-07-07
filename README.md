@@ -1,6 +1,6 @@
 # React Dashboard Starter
-**A React dashboard boilerplate project.**
-
+**A React dashboard boilerplate project.**\
+[![GitLabPipeline](https://gitlab.com/j1032w/react-dashboard-starter/badges/main/pipeline.svg)](https://gitlab.com/j1032w/react-dashboard-starter/-/pipelines)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <a href="https://github.com/j1032w/react-dashboard-starter" target="_blank"><img src="https://visitor-badge.laobi.icu/badge?page_id=j1032w/react-dashboard-starter"></a>
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate/?hosted_button_id=29ZE3URD5V9Q8)
@@ -15,7 +15,10 @@
 
 ![](documentations/redux-chrome.png)
 
-![](documentations/gitlab.png)
+https://gitlab.com/j1032w/react-dashboard-starter/-/pipelines
+
+[![GitLab](documentations/gitlab.png)](https://gitlab.com/j1032w/react-dashboard-starter/-/pipelines)
+
 
 
 # Features
